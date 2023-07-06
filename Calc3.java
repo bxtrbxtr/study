@@ -44,13 +44,20 @@ public class Calc3 extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else {
+		}
+		else if(operator!=null && operator.equals("C")) {
+			exp = "";
+		}
+		else {
 			exp = exp + ((value == null)?"":value);
 			exp = exp + ((operator == null)?"":operator);
 			exp = exp + ((dot == null)?"":dot);
 		}
 		
 			Cookie expCookie = new Cookie("exp", exp);
+			if(operator!=null && operator.equals("C")) {
+				expCookie.setMaxAge(0);
+			}
 			resp.addCookie(expCookie);
 			resp.sendRedirect("calcpage");
 		
