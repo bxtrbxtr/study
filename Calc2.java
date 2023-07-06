@@ -75,12 +75,13 @@ public class Calc2 extends HttpServlet{
 			Cookie valueCookie = new Cookie("value",String.valueOf(v));
 			//쿠키 심는건 무조건 스트링
 			Cookie opCookie = new Cookie("operator",op);
-			valueCookie.setPath("/add"); //이 경로에서만 브라우저가 쿠키를 가져옴
+			valueCookie.setPath("/"); //이 경로에서만 브라우저가 쿠키를 가져옴
 			valueCookie.setMaxAge(60*60*24*7);  //쿠키 만료 시간
-			opCookie.setPath("/add");
+			opCookie.setPath("/");
 			resp.addCookie(valueCookie); //쿠키 삽입
 			resp.addCookie(opCookie);
 			
+			resp.sendRedirect("calc2.html"); // 서버에서 페이지 전환
 		}
 		
 	}
